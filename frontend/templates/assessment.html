@@ -1,0 +1,375 @@
+<!-- File: frontend/templates/assessment.html
+     Assessment page for MathemAI application -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Skills Assessment - MathemAI</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/mathemat-logo.png" alt="MathemAI Logo" width="30" height="30" class="d-inline-block align-top">
+                MathemAI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="assessment.html">Assessment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/openimpactai/OpenImpactAI" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Assessment Container -->
+    <div class="container mt-5 pt-3">
+        <h1 class="text-center mb-4">Math Skills Assessment</h1>
+        <p class="text-center mb-4">This assessment helps identify potential math learning difficulties and provides personalized recommendations.</p>
+        
+        <!-- Progress Bar -->
+        <div class="progress mb-4">
+            <div id="assessment-progress" class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        
+        <!-- Assessment Form -->
+        <div id="assessment-form">
+            <!-- Step 1: Basic Information -->
+            <div class="assessment-step" id="step-1">
+                <h3 class="mb-4">Student Information</h3>
+                <div class="mb-3">
+                    <label for="student-age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="student-age" min="6" max="12" required>
+                    <div class="form-text">Enter age between 6 and 12 years</div>
+                </div>
+                <div class="mb-3">
+                    <label for="student-grade" class="form-label">Grade</label>
+                    <select class="form-select" id="student-grade" required>
+                        <option value="" selected disabled>Select grade</option>
+                        <option value="1">1st Grade</option>
+                        <option value="2">2nd Grade</option>
+                        <option value="3">3rd Grade</option>
+                        <option value="4">4th Grade</option>
+                        <option value="5">5th Grade</option>
+                        <option value="6">6th Grade</option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn btn-primary" onclick="nextStep(1)">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Number Skills -->
+            <div class="assessment-step" id="step-2" style="display: none;">
+                <h3 class="mb-4">Number Skills</h3>
+                
+                <div class="mb-4">
+                    <label class="form-label">Number Recognition</label>
+                    <div class="form-text mb-2">How well does the student recognize and identify numbers?</div>
+                    <div class="rating">
+                        <input type="radio" name="number_recognition" value="5" id="nr-5">
+                        <label for="nr-5">5</label>
+                        <input type="radio" name="number_recognition" value="4" id="nr-4">
+                        <label for="nr-4">4</label>
+                        <input type="radio" name="number_recognition" value="3" id="nr-3">
+                        <label for="nr-3">3</label>
+                        <input type="radio" name="number_recognition" value="2" id="nr-2">
+                        <label for="nr-2">2</label>
+                        <input type="radio" name="number_recognition" value="1" id="nr-1">
+                        <label for="nr-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Number Comparison</label>
+                    <div class="form-text mb-2">How well does the student compare quantities and determine which is greater or lesser?</div>
+                    <div class="rating">
+                        <input type="radio" name="number_comparison" value="5" id="nc-5">
+                        <label for="nc-5">5</label>
+                        <input type="radio" name="number_comparison" value="4" id="nc-4">
+                        <label for="nc-4">4</label>
+                        <input type="radio" name="number_comparison" value="3" id="nc-3">
+                        <label for="nc-3">3</label>
+                        <input type="radio" name="number_comparison" value="2" id="nc-2">
+                        <label for="nc-2">2</label>
+                        <input type="radio" name="number_comparison" value="1" id="nc-1">
+                        <label for="nc-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Counting Skills</label>
+                    <div class="form-text mb-2">How well does the student count sequences of numbers?</div>
+                    <div class="rating">
+                        <input type="radio" name="counting_skills" value="5" id="cs-5">
+                        <label for="cs-5">5</label>
+                        <input type="radio" name="counting_skills" value="4" id="cs-4">
+                        <label for="cs-4">4</label>
+                        <input type="radio" name="counting_skills" value="3" id="cs-3">
+                        <label for="cs-3">3</label>
+                        <input type="radio" name="counting_skills" value="2" id="cs-2">
+                        <label for="cs-2">2</label>
+                        <input type="radio" name="counting_skills" value="1" id="cs-1">
+                        <label for="cs-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep(2)">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Calculation Skills -->
+            <div class="assessment-step" id="step-3" style="display: none;">
+                <h3 class="mb-4">Calculation Skills</h3>
+                
+                <div class="mb-4">
+                    <label class="form-label">Calculation Accuracy</label>
+                    <div class="form-text mb-2">How accurately does the student perform calculations?</div>
+                    <div class="rating">
+                        <input type="radio" name="calculation_accuracy" value="5" id="ca-5">
+                        <label for="ca-5">5</label>
+                        <input type="radio" name="calculation_accuracy" value="4" id="ca-4">
+                        <label for="ca-4">4</label>
+                        <input type="radio" name="calculation_accuracy" value="3" id="ca-3">
+                        <label for="ca-3">3</label>
+                        <input type="radio" name="calculation_accuracy" value="2" id="ca-2">
+                        <label for="ca-2">2</label>
+                        <input type="radio" name="calculation_accuracy" value="1" id="ca-1">
+                        <label for="ca-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Calculation Fluency</label>
+                    <div class="form-text mb-2">How quickly does the student perform calculations?</div>
+                    <div class="rating">
+                        <input type="radio" name="calculation_fluency" value="5" id="cf-5">
+                        <label for="cf-5">5</label>
+                        <input type="radio" name="calculation_fluency" value="4" id="cf-4">
+                        <label for="cf-4">4</label>
+                        <input type="radio" name="calculation_fluency" value="3" id="cf-3">
+                        <label for="cf-3">3</label>
+                        <input type="radio" name="calculation_fluency" value="2" id="cf-2">
+                        <label for="cf-2">2</label>
+                        <input type="radio" name="calculation_fluency" value="1" id="cf-1">
+                        <label for="cf-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Arithmetic Facts Recall</label>
+                    <div class="form-text mb-2">How well does the student recall basic arithmetic facts?</div>
+                    <div class="rating">
+                        <input type="radio" name="arithmetic_facts_recall" value="5" id="afr-5">
+                        <label for="afr-5">5</label>
+                        <input type="radio" name="arithmetic_facts_recall" value="4" id="afr-4">
+                        <label for="afr-4">4</label>
+                        <input type="radio" name="arithmetic_facts_recall" value="3" id="afr-3">
+                        <label for="afr-3">3</label>
+                        <input type="radio" name="arithmetic_facts_recall" value="2" id="afr-2">
+                        <label for="afr-2">2</label>
+                        <input type="radio" name="arithmetic_facts_recall" value="1" id="afr-1">
+                        <label for="afr-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep(3)">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Problem Solving -->
+            <div class="assessment-step" id="step-4" style="display: none;">
+                <h3 class="mb-4">Problem Solving</h3>
+                
+                <div class="mb-4">
+                    <label class="form-label">Word Problem Solving</label>
+                    <div class="form-text mb-2">How well does the student solve mathematical word problems?</div>
+                    <div class="rating">
+                        <input type="radio" name="word_problem_solving" value="5" id="wps-5">
+                        <label for="wps-5">5</label>
+                        <input type="radio" name="word_problem_solving" value="4" id="wps-4">
+                        <label for="wps-4">4</label>
+                        <input type="radio" name="word_problem_solving" value="3" id="wps-3">
+                        <label for="wps-3">3</label>
+                        <input type="radio" name="word_problem_solving" value="2" id="wps-2">
+                        <label for="wps-2">2</label>
+                        <input type="radio" name="word_problem_solving" value="1" id="wps-1">
+                        <label for="wps-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Place Value Understanding</label>
+                    <div class="form-text mb-2">How well does the student understand place value concepts?</div>
+                    <div class="rating">
+                        <input type="radio" name="place_value" value="5" id="pv-5">
+                        <label for="pv-5">5</label>
+                        <input type="radio" name="place_value" value="4" id="pv-4">
+                        <label for="pv-4">4</label>
+                        <input type="radio" name="place_value" value="3" id="pv-3">
+                        <label for="pv-3">3</label>
+                        <input type="radio" name="place_value" value="2" id="pv-2">
+                        <label for="pv-2">2</label>
+                        <input type="radio" name="place_value" value="1" id="pv-1">
+                        <label for="pv-1">1</label>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <small>Poor</small>
+                        <small>Excellent</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" onclick="prevStep(4)"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep(4)">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Step 5: Cognitive Factors -->
+            <div class="assessment-step" id="step-5" style="display: none;">
+                <h3 class="mb-4">Cognitive Factors</h3>
+                
+                <div class="mb-3">
+                    <label for="math-anxiety-level" class="form-label">Math Anxiety Level</label>
+                    <select class="form-select" id="math-anxiety-level" required>
+                        <option value="" selected disabled>Select level</option>
+                        <option value="low">Low - Rarely shows anxiety about math</option>
+                        <option value="medium">Medium - Sometimes shows anxiety about math</option>
+                        <option value="high">High - Often shows significant anxiety about math</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="working-memory-score" class="form-label">Working Memory</label>
+                    <select class="form-select" id="working-memory-score" required>
+                        <option value="" selected disabled>Select level</option>
+                        <option value="normal">Normal - Can hold and manipulate information as expected for age</option>
+                        <option value="low">Low - Some difficulty holding and manipulating information</option>
+                        <option value="very_low">Very Low - Significant difficulty holding and manipulating information</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="visual-spatial-score" class="form-label">Visual-Spatial Skills</label>
+                    <select class="form-select" id="visual-spatial-score" required>
+                        <option value="" selected disabled>Select level</option>
+                        <option value="normal">Normal - Good understanding of spatial relationships for age</option>
+                        <option value="low">Low - Some difficulty with spatial relationships</option>
+                        <option value="very_low">Very Low - Significant difficulty with spatial relationships</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="attention-score" class="form-label">Attention</label>
+                    <select class="form-select" id="attention-score" required>
+                        <option value="" selected disabled>Select level</option>
+                        <option value="normal">Normal - Can maintain focus as expected for age</option>
+                        <option value="low">Low - Some difficulty maintaining focus</option>
+                        <option value="very_low">Very Low - Significant difficulty maintaining focus</option>
+                    </select>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-secondary" onclick="prevStep(5)"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-success" onclick="completeAssessment()">Complete Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>MathemAI</h5>
+                    <p>An open-source project dedicated to helping students with math learning difficulties through AI-assisted learning.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="assessment.html" class="text-white">Assessment</a></li>
+                        <li><a href="results.html" class="text-white">Results</a></li>
+                        <li><a href="progress.html" class="text-white">Progress</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Connect</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://github.com/openimpactai/OpenImpactAI" class="text-white">GitHub</a></li>
+                        <li><a href="#" class="text-white">Documentation</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <p>© 2025 MathemAI - Part of the OpenImpactAI initiative</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/assessment.js"></script>
+    <!-- Add Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

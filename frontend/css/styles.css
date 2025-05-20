@@ -1,0 +1,338 @@
+/**
+ * File: frontend/css/styles.css
+ * Custom styles for the MathemAI application
+ */
+
+/* Global Styles */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333333;
+    --background-color: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    padding-top: 56px; /* Adjust for fixed navbar */
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+/* Feature Icons */
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Step Boxes */
+.step-box {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--background-color);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Assessment Form */
+.assessment-step {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Rating Stars */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 0.25rem;
+    background-color: #ddd;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Notification */
+.notification {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Charts */
+#skills-chart-container,
+#diagnosis-chart-container,
+#progress-chart,
+#intervention-chart {
+    width: 100%;
+    height: 300px;
+}
+
+/* Interventions */
+.intervention-icon {
+    color: var(--primary-color);
+}
+
+/* Accessibility */
+.high-contrast {
+    --primary-color: #0000ff;
+    --secondary-color: #008000;
+    --warning-color: #ff8000;
+    --danger-color: #ff0000;
+    --text-color: #000000;
+    --background-color: #ffffff;
+    
+    /* Increase contrast */
+    --light-color: #f8f9fa;
+    --dark-color: #000000;
+}
+
+.high-contrast .text-muted {
+    color: #555555 !important;
+}
+
+.large-text {
+    font-size: 1.2rem;
+}
+
+.large-text h1 {
+    font-size: 2.5rem;
+}
+
+.large-text h2 {
+    font-size: 2rem;
+}
+
+.large-text h3 {
+    font-size: 1.75rem;
+}
+
+.large-text h4 {
+    font-size: 1.5rem;
+}
+
+.large-text .btn {
+    font-size: 1.2rem;
+    padding: 0.75rem 1.5rem;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --light-color: #2c3e50;
+    --dark-color: #ecf0f1;
+    --text-color: #ecf0f1;
+    --background-color: #1a1a1a;
+}
+
+.dark-mode .card {
+    background-color: #2c3e50;
+    border-color: #34495e;
+}
+
+.dark-mode .modal-content {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.dark-mode .table {
+    color: #ecf0f1;
+}
+
+.dark-mode .table-light,
+.dark-mode .table-light > th,
+.dark-mode .table-light > td {
+    background-color: #34495e;
+}
+
+.dark-mode .bg-light {
+    background-color: #2c3e50 !important;
+}
+
+.dark-mode .text-dark {
+    color: #ecf0f1 !important;
+}
+
+.dark-mode .btn-outline-secondary {
+    color: #ecf0f1;
+    border-color: #ecf0f1;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+    color: #1a1a1a;
+    background-color: #ecf0f1;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        padding-top: 0;
+    }
+    
+    .navbar,
+    .footer,
+    button,
+    .no-print {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd;
+        box-shadow: none !important;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .step-box {
+        margin-bottom: 2rem;
+    }
+    
+    #skills-chart-container,
+    #diagnosis-chart-container,
+    #progress-chart,
+    #intervention-chart {
+        height: 250px;
+    }
+    
+    .assessment-step {
+        padding: 1rem;
+    }
+    
+    .rating label {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .feature-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+    
+    .step-number {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+    
+    #skills-chart-container,
+    #diagnosis-chart-container,
+    #progress-chart,
+    #intervention-chart {
+        height: 200px;
+    }
+    
+    .rating label {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+/* Animation Effects */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

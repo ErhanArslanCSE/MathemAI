@@ -1,1 +1,31 @@
-ECHO is off.
+# Core dependencies
+numpy>=1.22.0
+pandas>=1.4.0
+scikit-learn>=1.0.2
+matplotlib>=3.5.0
+seaborn>=0.11.2
+joblib>=1.1.0
+
+# API and web server
+flask>=2.0.2
+flask-cors>=3.0.10
+gunicorn>=20.1.0
+
+# Data processing
+openpyxl>=3.0.9
+
+# Notebook support
+jupyter>=1.0.0
+ipywidgets>=7.6.5
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=2.12.1
+
+# Documentation
+sphinx>=4.4.0
+sphinx-rtd-theme>=1.0.0
+
+# Utilities
+tqdm>=4.62.3
+python-dotenv>=0.19.2
